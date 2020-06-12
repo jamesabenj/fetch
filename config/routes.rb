@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :dogs
-  get '/about', to: 'static#about'
-  root to: 'static#about'
+  root to: 'users#home'
+  resources :users do 
+    resources :dogs
+  end 
+
+  get '/signup', to: 'users#new'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  post '/logout', to: 'sessions#destroy'
+
+  get 'auth/:provider/callback', to: 'sessions#authcreate'
+  #get 'auth/failure', to: redirect('/')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
