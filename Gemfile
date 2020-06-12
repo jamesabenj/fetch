@@ -10,6 +10,13 @@ end
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
+
+gem 'dotenv-rails'
+gem 'omniauth'
+#gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'bcrypt'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -52,6 +59,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'omniauth-google-oauth2'
-
-#gem 'dotenv-rails'
+gem 'carrierwave' , '~> 2.0'
+gem 'carrierwave-aws'
+gem 'mini_magick'
+gem 'aws-sdk-rails'
+gem 'aws-sdk-s3'
