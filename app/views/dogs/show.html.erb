@@ -1,6 +1,20 @@
-
+<% if @dog.images.any? %>
+    <% @dog.formatted_img_urls.each do |url| %>
+        <img src="<%= url %>" alt="image" width="300" height="300">
+    <% end %>
+<% else %>
+    <%= image_tag("dog.png", size: "300") %>
+<% end %>
 <h2><%= @dog.name %></h2>
-<br>
-<%= @dog.breed %>
-<br>
+<p>Breed: <%= @dog.breed.name %></p>
+<p>Bio:</p>
 <%= @dog.bio %>
+<br>
+<p>Contact: <%=  @dog.user.username %></p>
+<% if @dog.user == current_user %>
+    <%= link_to "Edit", edit_user_dog_path(@dog.user, @dog) %>
+    <span><%= link_to "Remove", [@dog.user, @dog], method: :delete, data: { confirm: "Are you sure?" } %></span>
+<% end %>
+<% if current_user && @dog.user != current_user %>
+    <%= button_to "Favorite", create_favorite_path %>
+<% end %>
