@@ -1,0 +1,8 @@
+
+<% if @dogs %>
+    <% @dogs.each do |dog| %>
+        <p><%= link_to dog.name, user_dog_path(dog.user, dog) %>
+    <% end %>
+<% else %>
+    <p><%= @notice %></p>       
+<% end %>
