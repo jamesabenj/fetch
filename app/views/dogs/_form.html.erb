@@ -1,0 +1,9 @@
+<%= f.label :name %>
+<%= f.text_field :name %>
+<p><%= f.label :image %>
+<%= f.file_field :images, multiple: true %>
+<p><%= label_tag(:breed, "Breed") %>
+<%= text_field(:breed, :name) %>
+<p><%= f.label :bio %>
+<%= f.text_area :bio, size: "40x10" %>
+<br>
