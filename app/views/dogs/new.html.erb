@@ -14,17 +14,7 @@
 </div>
 <% end %>
 
-<%= form_for @dog do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.file_field :images, multiple: true %>
-
-  <%= f.label :breed %>
-  <%= f.text_field :breed %>
-  <%= f.label :bio %>
-  <%= f.text_area :bio %>
-  <%= f.label :adopted %>
-  <%= f.check_box :adopted %>
-
-  <%= f.submit %>
-<% end %>
+  <%= form_for @dog do |f|%>
+    <%=render partial: 'form', locals: {f: f}%>
+    <%=f.submit "Submit"%>
+  <%end%>
