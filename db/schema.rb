@@ -10,16 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_204506) do
+ActiveRecord::Schema.define(version: 2020_06_17_025619) do
+
+  create_table "breeds", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "dog_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.text "bio"
     t.boolean "adopted"
-    t.string "breed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "images"
+    t.integer "user_id"
+    t.integer "breed_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "dog_id"
+    t.integer "follower_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "followers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
