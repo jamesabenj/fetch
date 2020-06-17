@@ -1,0 +1,11 @@
+<h4>Search by Breed:</h4>
+<span>
+    <%= form_tag('/dogs', method: :get) do %>
+        <%= text_field_tag(:search) %>
+        <%= submit_tag("Search") %>
+    <% end %>
+</span>
+<%= @error %>
+<% @dogs.each do |dog| %>
+    <p><%= link_to dog.name, user_dog_path(dog.user, dog) %>
+<% end %>
