@@ -1,3 +1,5 @@
+
+<p><%= @notice %></p>
 <% @dogs.each do |dog| %>
-    <p><%= link_to dog.name, dog_path(dog) %>
+    <p><%= link_to dog.name, user_dog_path(dog.user, dog) %>
 <% end %>
