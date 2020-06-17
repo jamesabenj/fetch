@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Fetch! 
 
-Things you may want to cover:
+A Ruby on Rails app where you can browse adoptable dogs and post your own dogs for adoption.
 
-* Ruby version
+To Run:
 
-* System dependencies
+- Download files 
 
-* Configuration
+- Bundle 
 
-* Database creation
+- run 'rails s'
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
