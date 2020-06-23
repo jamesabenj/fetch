@@ -40,6 +40,10 @@ class DogsController < ApplicationController
         end 
     end 
 
+    def popular
+        @dogs = Dog.most_popular
+    end 
+
     def edit
         find_dog
         if @dog.user != current_user

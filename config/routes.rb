@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   post '/users/:user_id/dogs/:id/favorites', to: 'favorites#create', as: "create_favorite"
   get '/favorites', to: 'favorites#index', as: 'favs'
+  get  '/popular', to: 'dogs#popular'
 
   get 'auth/:provider/callback', to: 'sessions#authcreate'
   get 'auth/failure', to: redirect('/')

@@ -24,12 +24,16 @@ class Dog < ApplicationRecord
             search.capitalize!
             breed = Breed.find_by(name: search)
             if breed
-                self.where(breed_id: breed)
+                self.where(breed_id: breed.id)
             else 
                 Dog.all
             end 
         else
             Dog.all
         end
+    end 
+
+    def self.most_popular
+        self.all.sort_by {|i| i.favorites.count}.reverse![0..9]
     end 
 end
