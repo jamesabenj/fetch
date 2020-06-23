@@ -1,9 +1,9 @@
 class DogsController < ApplicationController
     before_action :require_login, except: [:index, :global_index, :show]
     layout :dogs_layout
+
     def new
         @dog = Dog.new
-        @breed = Breed.new
     end 
 
     def index
@@ -16,7 +16,7 @@ class DogsController < ApplicationController
 
     def global_index
         @dogs = Dog.search(params[:search])
-        if params[:search] && !Breed.find_by(name: params[:search])
+        if params[:search] && !Dog.any? {|i| i.breed.name == params[:search] }
             @error = "No dogs match that breed, showing all dogs"
         end 
     end 
@@ -35,10 +35,16 @@ class DogsController < ApplicationController
 
     def show
         find_dog
+        if current_user
+            @disable = @dog.followers.any? {|i| i.id == current_user.id } ? true : false
+        end 
     end 
 
     def edit
         find_dog
+        if @dog.user != current_user
+            redirect_to profile_path(current_user)
+        end 
     end 
 
     def update
@@ -46,7 +52,7 @@ class DogsController < ApplicationController
         if @dog.user == current_user
             @dog.update(dog_params)
             if @dog.valid?
-                redirect_to user_dog_path(current_user, @dog)
+                redirect_to user_dog_path(@dog.user, @dog)
             else 
                 render :edit
             end
