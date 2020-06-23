@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end 
 
   def find_dog
-    @dog = Dog.find(params[:id])
+    @dog = Dog.find_by(id: params[:id])
   end 
 
   def require_login
