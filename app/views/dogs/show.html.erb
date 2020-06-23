@@ -16,5 +16,5 @@
     <span><%= link_to "Remove", [@dog.user, @dog], method: :delete, data: { confirm: "Are you sure?" } %></span>
 <% end %>
 <% if current_user && @dog.user != current_user %>
-    <%= button_to "Favorite", create_favorite_path %>
+    <%= button_to "Favorite", create_favorite_path, :disabled => @disable %>
 <% end %>
