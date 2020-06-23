@@ -1,0 +1,6 @@
+<h1>Most Favorited Dogs</h1>
+
+<% @dogs.each do |dog| %>
+    <p><%= link_to dog.name, user_dog_path(dog.user, dog) %>
+    <span><%= dog.favorites.length %></span>
+<% end %>
